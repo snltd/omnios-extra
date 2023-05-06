@@ -1,0 +1,29 @@
+diff -wpruN '--exclude=*.orig' a~/Makefile a/Makefile
+--- a~/Makefile	2023-03-05 15:48:25.000000000 +0000
++++ a/Makefile	2023-04-06 14:22:19.246176604 +0000
+@@ -22,14 +22,14 @@
+ ##### Set global variables #####
+ ################################
+ sinclude config.mk
+-PREFIX?=/usr/local
++PREFIX?=/opt/ooce
+ 
+ JANETCONF_HEADER?=src/conf/janetconf.h
+ INCLUDEDIR?=$(PREFIX)/include
+ BINDIR?=$(PREFIX)/bin
+ LIBDIR?=$(PREFIX)/lib
+ JANET_BUILD?="\"$(shell git log --pretty=format:'%h' -n 1 2> /dev/null || echo local)\""
+-CLIBS=-lm -lpthread
++CLIBS=-lm -lsocket -lssp
+ JANET_TARGET=build/janet
+ JANET_IMPORT_LIB=build/janet.lib
+ JANET_LIBRARY=build/libjanet.so
+@@ -50,7 +50,7 @@ LDFLAGS?=-rdynamic
+ 
+ COMMON_CFLAGS:=-std=c99 -Wall -Wextra -Isrc/include -Isrc/conf -fvisibility=hidden -fPIC
+ BOOT_CFLAGS:=-DJANET_BOOTSTRAP -DJANET_BUILD=$(JANET_BUILD) -O0 -g $(COMMON_CFLAGS)
+-BUILD_CFLAGS:=$(CFLAGS) $(COMMON_CFLAGS)
++BUILD_CFLAGS:=$(CFLAGS) $(COMMON_CFLAGS) -D__EXTENSIONS__ -fstack-protector-all
+ 
+ # For installation
+ LDCONFIG:=ldconfig "$(LIBDIR)"
