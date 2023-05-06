@@ -10,3 +10,4 @@ tmp.repo.aarch64/
 *.p5m.aarch64.final
 *~
 tmp
+*.swp
