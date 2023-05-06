@@ -21,25 +21,15 @@ VER=3.9.1
 PKG=sysdef/developer/apache-maven
 SUMMARY="Java build automation tool"
 DESC="Software project management and comprehension tool"
-
-BUILD_DEPENDS_IPS="
-    developer/java/openjdk8
-"
+BUILD_DEPENDS_IPS="developer/java/openjdk8"
 
 set_mirror https://dlcdn.apache.org
 
 init
 download_source maven/maven-3/${VER}/binaries $PROG ${VER}-bin
 mkdir -p "${DESTDIR}${PREFIX}"
-#echo "TMPDIR/BUILDDIR is $TMPDIR/$BUILDDIR"
-#echo "make $TMPDIR/$OPREFIX"
-#mkdir -p $TMPDIR/$OPREFIX
-#mkdir ${DESTDIR}/bin
 rsync -a $TMPDIR/$BUILDDIR/ "${DESTDIR}${PREFIX}"
 rm -fr "${DESTDIR}${PREFIX}/lib/jansi-native"
-#echo "DESTDIR is $DESTDIR/$PREFIX"
-#ls $DESTDIR/$PREFIX
-#exit
 make_package
 clean_up
 
