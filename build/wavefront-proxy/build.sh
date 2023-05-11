@@ -20,9 +20,12 @@ PROG=wavefront-proxy
 VER=12.4
 PKG=sysdef/wavefront-proxy
 SUMMARY="Wavefront proxy server"
-DESC="Resilient metric collection for Wavfront SaaS"
+DESC="Resilient metric collection for Wavefront SaaS"
 BUILD_DEPENDS_IPS="developer/java/openjdk8 apache-maven"
 RUN_DEPENDS_IPS="developer/java/openjdk8"
+OPREFIX=$PREFIX
+PREFIX+="/$PROG"
+PATH=/usr/jdk/instances/openjdk1.8.0/bin:$PATH
 
 set_arch 64
 set_mirror https://github.com
@@ -38,11 +41,11 @@ build_jar() {
 }
 
 build_target() {
-    logcmd mkdir -p $DESTDIR${PREFIX}/lib $DESTDIR/etc/${PREFIX}/wavefront-proxy
+    logcmd mkdir -p $DESTDIR${PREFIX}/lib $DESTDIR/etc/${OPREFIX}/wavefront-proxy
     logcmd cp ${TMPDIR}/${BUILDDIR}/proxy/target/proxy-12.4-spring-boot.jar \
               $DESTDIR${PREFIX}/lib/wavefront-proxy.jar \
                 || logerr "failed to copy jar"
-    logcmd cp ${SRCDIR}/files/log4j2.xml $DESTDIR/etc/${PREFIX}/wavefront-proxy
+    logcmd cp ${SRCDIR}/files/log4j2.xml $DESTDIR/etc/${OPREFIX}/wavefront-proxy
 }
 
 init

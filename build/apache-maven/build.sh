@@ -22,6 +22,13 @@ PKG=sysdef/developer/apache-maven
 SUMMARY="Java build automation tool"
 DESC="Software project management and comprehension tool"
 BUILD_DEPENDS_IPS="developer/java/openjdk8"
+OPREFIX=$PREFIX
+PREFIX+="/$PROG"
+XFORM_ARGS="
+    -DPREFIX=${PREFIX#/}
+    -DOPREFIX=${OPREFIX#/}
+    -DPKGROOT=$PROG
+    "
 
 set_mirror https://dlcdn.apache.org
 

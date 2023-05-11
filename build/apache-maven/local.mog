@@ -13,4 +13,6 @@
 #
 # Copyright 2018 OmniOS Community Edition.  All rights reserved.
 
+<include binlink.mog>
+
 license LICENSE license=Apache2

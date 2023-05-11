@@ -16,17 +16,26 @@
 
 . ../../lib/build.sh
 
-PROG=little_tools
+PROG=little-tools
 VER=1.0.0
-PKG=sysdef/util/little_tools
+PKG=sysdef/util/little-tools
 SUMMARY="Little command-line tools"
 DESC="Useful little command-line tools"
 BUILD_DEPENDS_IPS=ooce/developer/rust
 SKIP_RTIME_CHECK=1
+OPREFIX=$PREFIX
+PREFIX+="/$PROG"
+
+XFORM_ARGS="
+    -DPREFIX=${PREFIX#/}
+    -DOPREFIX=${OPREFIX#/}
+    -DPROG=$PROG
+    -DPKGROOT=$PROG
+    "
 
 set_arch 64
 set_mirror https://github.com
-set_checksum sha256 ac5b654ae8e50c554bd9710533f8e47c4ba1293ffc64b01fb7720938ca8aee44
+set_checksum sha256 2e3b218782b7f80eeaf1e150e21255d8df8333c61819fe4e66c4b7d3ed22d679
 set_ssp none
 
 init

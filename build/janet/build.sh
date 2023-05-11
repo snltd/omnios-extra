@@ -22,8 +22,18 @@ PKG=sysdef/runtime/janet
 SUMMARY="The Janet programming language"
 DESC="A functional, imperative Lisp-like programming language"
 
+OPREFIX=$PREFIX
+PREFIX+="/$PROG"
+
+XFORM_ARGS="
+    -DPREFIX=${PREFIX#/}
+    -DOPREFIX=${OPREFIX#/}
+    -DPROG=$PROG
+    -DPKGROOT=$PROG
+    "
+
 configure_amd64() {
-   :
+    :
 }
 
 build_fini() {
@@ -40,7 +50,7 @@ set_checksum sha256 a81c8750844323eb73aea064db9c467aa3361a03fc6f251d3e19a473b147
 init
 download_source janet-lang/janet/archive/refs/tags v${VER}
 patch_source
-build -noctf
+PREFIX=$PREFIX build -noctf
 test
 strip_install
 make_package

@@ -21,9 +21,19 @@ VER=3.0.10
 PKG=sysdef/audio/shntool
 SUMMARY="shntool manipulates wave data"
 DESC="tooling to manipulate audio files"
+
+OPREFIX=$PREFIX
+PREFIX+="/$PROG"
+
+XFORM_ARGS="
+    -DPREFIX=${PREFIX#/}
+    -DOPREFIX=${OPREFIX#/}
+    -DPROG=$PROG
+    -DPKGROOT=$PROG
+    "
+
 CONFIGURE_OPTS="--disable-static
-                --prefix=$PREFIX
-                --includedir=$OPREFIX/include"
+                --prefix=$PREFIX"
 
 set_arch 64
 set_mirror http://shnutils.freeshell.org
