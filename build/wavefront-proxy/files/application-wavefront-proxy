@@ -15,7 +15,7 @@ CONF_DIR=/etc/opt/ooce/wavefront-proxy
 	-server  \
 	-Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager \
 	-Dlog4j.configurationFile=${CONF_DIR}/log4j2.xml \
-	-jar /opt/ooce/lib/wavefront-proxy.jar \
+	-jar /opt/ooce/wavefront-proxy/lib/wavefront-proxy.jar \
 	-f ${CONF_DIR}/wavefront.conf &
 
 PID=$!

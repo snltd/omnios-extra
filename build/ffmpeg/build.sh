@@ -49,7 +49,7 @@ XFORM_ARGS="
     -DPROG=$PROG
     -DPKGROOT=$PROG
 "
-
+gt
 # ffmpeg contains BMI instructions even when built on an older CPU
 BMI_EXPECTED=1
 
