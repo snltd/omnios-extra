@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=wavefront-proxy
-VER=12.4
+VER=13.4
 PKG=sysdef/wavefront-proxy
 SUMMARY="Wavefront proxy server"
 DESC="Resilient metric collection for Wavefront SaaS"
@@ -30,7 +30,7 @@ PATH=/usr/jdk/instances/openjdk1.8.0/bin:$PATH
 set_arch 64
 set_mirror https://github.com
 set_checksum sha256 6b620581b6053fcac89bf878546c8dc7de4f45def790326f8e0e04c8388bf1e1
-set_builddir wavefront-proxy-proxy-12.4
+set_builddir wavefront-proxy-proxy-${VER}
 
 XFORM_ARGS="-DPREFIX=${PREFIX#/} -DPROG=$PROG"
 
@@ -42,7 +42,7 @@ build_jar() {
 
 build_target() {
     logcmd mkdir -p $DESTDIR${PREFIX}/lib $DESTDIR/etc/${OPREFIX}/wavefront-proxy
-    logcmd cp ${TMPDIR}/${BUILDDIR}/proxy/target/proxy-12.4-spring-boot.jar \
+    logcmd cp ${TMPDIR}/${BUILDDIR}/proxy/target/proxy-${VER}-spring-boot.jar \
               $DESTDIR${PREFIX}/lib/wavefront-proxy.jar \
                 || logerr "failed to copy jar"
     logcmd cp ${SRCDIR}/files/log4j2.xml $DESTDIR/etc/${OPREFIX}/wavefront-proxy
