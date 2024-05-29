@@ -1,3 +1,4 @@
 makefile.patch
-random_buffer.patch
+illumos_def.patch
 utc_mktime.patch
+makefile-strip.patch
