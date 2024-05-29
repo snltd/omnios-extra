@@ -11,6 +11,6 @@
 # Copyright 2023 Sysdef Ltd
 
 <include binlink.mog>
+<include manlink.mog>
 
 license LICENSE license=MIT
-
