@@ -13,5 +13,4 @@
 <include binlink.mog>
 <include manlink.mog>
 
-license LICENSE license=MIT
-
+license spork/LICENSE license=MIT
