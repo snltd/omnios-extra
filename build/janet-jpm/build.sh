@@ -35,6 +35,7 @@ XFORM_ARGS="
 
 set_mirror https://github.com
 set_checksum sha256 337c40d9b8c087b920202287b375c2962447218e8e127ce3a5a12e6e47ac6f16
+unset JANET_TREE
 
 init
 download_source janet-lang/${PROG}/archive/refs/tags v$VER
