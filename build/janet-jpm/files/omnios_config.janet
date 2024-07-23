@@ -8,7 +8,7 @@
    :c++-link "g++"
    :cc "gcc"
    :cc-link "gcc"
-   :cflags @["-std=c99" "-D__EXTENSIONS__"]
+   :cflags @["-std=c99" "-D__EXTENSIONS__" "-DJANET_NO_NANBOX"]
    :cflags-verbose @["-Wall" "-Wextra"]
    :cppflags @["-std=c++11"]
    :curlpath "curl"

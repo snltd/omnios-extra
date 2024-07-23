@@ -3,3 +3,4 @@ illumos_os.patch
 makefile-strip.patch
 makefile.patch
 utc_mktime.patch
+cpu-count.patch
