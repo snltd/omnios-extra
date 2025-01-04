@@ -12,4 +12,4 @@
 
 <include binlink.mog>
 
-license LICENSE license=simplified-BSD
+license LICENSE.txt license=simplified-BSD

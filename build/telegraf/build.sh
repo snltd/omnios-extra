@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2023 Sysdef Ltd
+# Copyright 2024 Sysdef Ltd
 
 . ../../lib/build.sh
 
@@ -61,7 +61,6 @@ set_checksum sha256 576c9cade0ed12d055e3cd3deced35936c96a5a4785dd915463fd1282fcd
 SKIP_RTIME_CHECK=true
 BMI_EXPECTED=true
 
-# create package functions
 init
 download_source influxdata/telegraf/archive/refs/tags v${VER}
 patch_source

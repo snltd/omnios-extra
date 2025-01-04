@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=little-tools
-VER=1.0.0
+VER=1.2.0
 PKG=sysdef/util/little-tools
 SUMMARY="Little command-line tools"
 DESC="Useful little command-line tools"
@@ -35,14 +35,21 @@ XFORM_ARGS="
 
 set_arch 64
 set_mirror https://github.com
-set_checksum sha256 2e3b218782b7f80eeaf1e150e21255d8df8333c61819fe4e66c4b7d3ed22d679
+set_checksum sha256 b488299410e8a9f652dd952c4f625984983220a54f1305f55784a7adf9c2ece1
 set_ssp none
 
 init
 download_source snltd/${PROG}/archive/refs/tags $VER
 pushd $TMPDIR/$BUILDDIR >/dev/null
-logcmd $CARGO install --path=. --bins --root ${DESTDIR}$PREFIX \
-    || logerr "build failed"
+logcmd $CARGO build --release
+logcmd mkdir -p ${DESTDIR}/$PREFIX
+BINDIR="${DESTDIR}${PREFIX}/bin/"
+logcmd mkdir -p $BINDIR
+logcmd cp target/release/alsort $BINDIR
+logcmd cp target/release/cf $BINDIR
+logcmd cp target/release/cs $BINDIR
+logcmd cp target/release/fseq $BINDIR
+logcmd cp target/release/mmv $BINDIR
 popd >/dev/null
 strip_install
 make_package

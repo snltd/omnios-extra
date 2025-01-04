@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=wavefront-proxy
-VER=13.4
+VER=13.7
 PKG=sysdef/wavefront-proxy
 SUMMARY="Wavefront proxy server"
 DESC="Resilient metric collection for Wavefront SaaS"
@@ -29,7 +29,7 @@ PATH=/usr/jdk/instances/openjdk1.8.0/bin:$PATH
 
 set_arch 64
 set_mirror https://github.com
-set_checksum sha256 6b620581b6053fcac89bf878546c8dc7de4f45def790326f8e0e04c8388bf1e1
+set_checksum sha256 42cf250097953ecaf03f1f5904e47e1fd4016066ce3cdf2db645dc45c9adcceb
 set_builddir wavefront-proxy-proxy-${VER}
 
 XFORM_ARGS="-DPREFIX=${PREFIX#/} -DPROG=$PROG"
