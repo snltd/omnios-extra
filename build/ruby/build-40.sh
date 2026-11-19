@@ -55,8 +55,6 @@ LDFLAGS[amd64]+=" -R$OPREFIX/lib/amd64"
 
 subsume_arch $BUILDARCH PKG_CONFIG_PATH
 
-SKIP_DOWNLOAD=true
-
 init
 download_source $PROG $PROG $VER
 patch_source
