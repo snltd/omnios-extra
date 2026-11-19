@@ -17,7 +17,7 @@
 . ../../lib/build.sh
 
 PROG=ruby
-VER=4.0.2
+VER=4.0.10
 PKG=ooce/runtime/ruby-40
 SUMMARY="Ruby"
 DESC="A dynamic, open source programming language "
@@ -54,6 +54,8 @@ CPPFLAGS+=" -I/usr/include/gmp"
 LDFLAGS[amd64]+=" -R$OPREFIX/lib/amd64"
 
 subsume_arch $BUILDARCH PKG_CONFIG_PATH
+
+SKIP_DOWNLOAD=true
 
 init
 download_source $PROG $PROG $VER
